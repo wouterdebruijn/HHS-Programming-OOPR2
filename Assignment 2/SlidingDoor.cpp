@@ -5,6 +5,7 @@
 #include <QPen>
 
 SlidingDoor::SlidingDoor(int x, int y, unsigned int length, Sensor *sensor) : Door(x,y,length), safetySensor(sensor) {};
+SlidingDoor::SlidingDoor(int x, int y, unsigned int length, Sensor *sensor, Lock *lock) : Door(x,y,length, lock), safetySensor(sensor) {};
 
 void SlidingDoor::draw(QPaintDevice *tp) {
     QPainter p(tp);
@@ -22,6 +23,8 @@ void SlidingDoor::draw(QPaintDevice *tp) {
 
 void SlidingDoor::close() {
     if (!safetySensor->isGeactiveerd()) {
+        if (this->lock != nullptr)
+            this->lock->lock();
         status = false;
         safetySensor->activeer();
     }

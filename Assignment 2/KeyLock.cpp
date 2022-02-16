@@ -1,6 +1,6 @@
 #include "KeyLock.h"
 
-KeyLock::KeyLock(std::string code) : code(code), locked(false) {}
+KeyLock::KeyLock(std::string code) : code(code), locked(true) {}
 
 void KeyLock::lock() {
     this->locked = true;

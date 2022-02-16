@@ -4,14 +4,25 @@
 #include <QPainter>
 #include <QPen>
 
-Door::Door(int x, int y, unsigned int length) : x(x), y(y), length(length), status(false) {}
+Door::Door(int x, int y, unsigned int length) : x(x), y(y), length(length), status(false), lock(nullptr) {}
+Door::Door(int x, int y, unsigned int length, Lock *lock) : x(x), y(y), length(length), status(false), lock(lock) {}
 
 void Door::close() {
+    if (this->lock != nullptr)
+        this->lock->lock();
     status = false;
 }
 
 void Door::open() {
-    status = true;
+    // Open if we don't have a lock.
+    if (this->lock == nullptr) {
+        status = true;
+        return;
+    }
+
+    // Check if lock is open, and open door.
+    if (!this->lock->isLocked())
+        status = true;
 }
 
 unsigned int Door::doorLength() {
@@ -34,4 +45,8 @@ void Door::draw(QPaintDevice * tp) {
 
 bool Door::isOpen() {
     return this->status;
+}
+
+Lock* Door::getLock() {
+    return this->lock;
 }

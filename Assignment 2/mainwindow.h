@@ -25,7 +25,6 @@ private slots:
     void on_Button_FrontDoor_clicked();
     void on_Button_Door1_clicked();
     void on_Button_Door2_clicked();
-    void doorClickEvent(unsigned int);
 
 private:
     std::shared_ptr<Ui::MainWindow> ui;

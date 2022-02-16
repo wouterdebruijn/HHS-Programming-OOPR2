@@ -3,11 +3,11 @@
 
 #include "Lock.h"
 
-class CodeLock : public Lock<unsigned int> {
+class CodeLock : public Lock {
 public:
     CodeLock(const unsigned int code);
     void lock();
-    void unlock(const unsigned int code);
+    void unlock(const std::string code);
     bool isLocked();
 private:
     unsigned int code;

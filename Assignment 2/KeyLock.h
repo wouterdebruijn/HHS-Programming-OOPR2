@@ -2,9 +2,8 @@
 #define KEYLOCK_H
 
 #include "Lock.h"
-#include <string>
 
-class KeyLock : public Lock<std::string> {
+class KeyLock : public Lock {
 public:
     KeyLock(const std::string code);
     void unlock(const std::string key);

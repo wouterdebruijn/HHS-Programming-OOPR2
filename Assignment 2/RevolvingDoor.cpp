@@ -5,6 +5,8 @@
 #include <QPen>
 
 RevolvingDoor::RevolvingDoor(int x,int y,unsigned int length, bool isHorizontal, bool isLefty): Door(x,y,length), horizontal(isHorizontal), lefty(isLefty) {}
+RevolvingDoor::RevolvingDoor(int x,int y,unsigned int length, bool isHorizontal, bool isLefty, Lock* lock): Door(x,y,length, lock), horizontal(isHorizontal), lefty(isLefty) {}
+
 void RevolvingDoor::draw(QPaintDevice *tp) {
     QPainter p(tp);
     p.setBrush(Qt::SolidPattern);

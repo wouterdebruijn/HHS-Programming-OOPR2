@@ -3,10 +3,12 @@
 
 #include "Door.h"
 #include "Sensor.h"
+#include "Lock.h"
 
 class SlidingDoor : public Door {
 public:
     SlidingDoor(int, int, unsigned int, Sensor *);
+    SlidingDoor(int, int, unsigned int, Sensor *, Lock*);
     void draw(QPaintDevice *) override;
     void close() override;
 private:
